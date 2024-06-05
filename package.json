@@ -8,7 +8,7 @@
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "concurrently --kill-others \"npm run watch\" \"nodemon .\"",
+    "dev": "concurrently --kill-others \"npm run watch\" \"nodemon .\"",
     "watch": "tsc -w"
   },
   "author": "perymerdeka",
@@ -22,8 +22,10 @@
   "dependencies": {
     "@types/express-serve-static-core": "^4.19.1",
     "@types/socket.io": "^3.0.2",
+    "@types/uuid": "^9.0.8",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "socket.io": "^4.7.5"
+    "socket.io": "^4.7.5",
+    "uuid": "^9.0.1"
   }
 }
