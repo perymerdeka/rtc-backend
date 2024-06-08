@@ -1,8 +1,7 @@
-export const createRoom = () => {
-    console.log(`Room Created`)
-}
-
-export const joinRoom = () => {
-    console.log("User is Joined")
-}
-
+export const joinRoom = (): void => {
+    console.log("User is Joined");
+  };
+  
+  export const enterRoom = (): void => {
+    console.log("User is Entering Room");
+  };
