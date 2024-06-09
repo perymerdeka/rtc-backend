@@ -17,7 +17,7 @@ const io = new Server(server, {
 });
 
 io.on('connect', (socket) => {
-    console.log('a socket connected in the server', socket.id);
+    console.log('a socket connected in the server with id: ', socket.id);
     
     // add room handler
     roomHandler(socket);
