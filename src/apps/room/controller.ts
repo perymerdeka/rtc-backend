@@ -1,11 +1,14 @@
-export const joinRoom = (): void => {
-  console.log("User is Joined");
+import { Request, Response } from 'express';
+import { generateMeetingId } from '../../utils/generateMeetingId';
+
+const createMeeting = (req: Request, res: Response) => {
+  const meetingId = generateMeetingId();
+  res.json({ meetingId });
 };
 
-export const enterRoom = (): void => {
-  console.log("User is Entering Room");
+const getMeetingId = (req: Request, res: Response) => {
+  const meetingId = req.params.id;
+  res.json({ meetingId });
 };
 
-export const createRoom = (): void => {
-  console.log("User is Creating Room");
-};
+export { createMeeting, getMeetingId };

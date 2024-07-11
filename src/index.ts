@@ -1,29 +1,19 @@
-import express from "express";
-import { createServer } from "http";
-import { Server } from "socket.io";
-import cors from "cors";
-import { roomHandler } from "./apps/room/handler";
-
-const port = 8000;
+import express from 'express';
+import bodyParser from 'body-parser';
+import http from 'http';
+import meetingRoutes from './apps/room/router';
+import { setupSocket } from './socket';
 
 const app = express();
-app.use(cors);
-const server = createServer(app);
-const io = new Server(server, {
-    cors: {
-        origin: "*",
-        methods: ['GET', 'POST'],
-    }
+const PORT = process.env.PORT || 5000;
+
+app.use(bodyParser.json());
+app.use('/api', meetingRoutes);
+
+const server = http.createServer(app);
+
+setupSocket(server);
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
-
-io.on('connect', (socket) => {
-    console.log('a socket connected in the server with id: ', socket.id);
-    
-    // add room handler
-    roomHandler(socket);
-  });
-
-
-server.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-})
