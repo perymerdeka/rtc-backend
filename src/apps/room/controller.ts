@@ -3,6 +3,7 @@ import { generateMeetingId } from '../../utils/generateMeetingId';
 
 const createMeeting = (req: Request, res: Response) => {
   const meetingId = generateMeetingId();
+  console.log(`new meeting id generated: ${meetingId}`);
   res.json({ meetingId });
 };
 
