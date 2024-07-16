@@ -13,6 +13,7 @@ const setupSocket = (server: HTTPServer) => {
     console.log(`New connection: ${socket.id}`);
 
     socket.on('join-room', (roomId, userId) => {
+      console.log(`User ${userId} joined room ${roomId}`);
       socket.join(roomId);
       socket.to(roomId).emit('user-connected', userId);
 

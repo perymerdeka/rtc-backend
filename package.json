@@ -8,7 +8,7 @@
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
-    "dev": "concurrently --kill-others \"npm run watch\" \"nodemon .\"",
+    "dev": "concurrently --kill-others \"npm run watch\" \"nodemon .\" --env-file=.env",
     "watch": "tsc -w"
   },
   "author": "perymerdeka",
