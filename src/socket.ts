@@ -13,12 +13,12 @@ const setupSocket = (server: HTTPServer) => {
     userId: string;
     userName: string;
   }
+  
   interface Room {
     [roomId: string]: User[];
   }
   
   const rooms: Room = {};
-
 
   io.on('connect', (socket: Socket) => {
     console.log(`New connection: ${socket.id}`);
@@ -31,11 +31,12 @@ const setupSocket = (server: HTTPServer) => {
       }
   
       rooms[roomId].push(user);
-      console.log(rooms)
       socket.join(roomId);
+      console.log(rooms);
   
       // Emit the current users in the room to the new user
       socket.emit('current-users', rooms[roomId]);
+      console.log(rooms);
   
       // Broadcast the new user to other users in the room
       socket.to(roomId).emit('user-connected', user);
