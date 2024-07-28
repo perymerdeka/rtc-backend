@@ -51,7 +51,7 @@ app.use('/api', MeetingRouter);
 // setupPeerServer(server, app); 
 
 // Socket
-io.on('connection', (socket: Socket) => {
+io.on('connect', (socket: Socket) => {
     console.log('a user connected');
 
     // handle join room
