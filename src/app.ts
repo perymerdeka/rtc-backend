@@ -55,7 +55,7 @@ io.on('connection', (socket: Socket) => {
     console.log('a user connected');
 
     // handle join room
-    socket.on('join_room', (roomID: string, user: User) => {
+    socket.on('join-room', (roomID: string, user: User) => {
         console.log(`${user.userName} joined room ${roomID}`);
 
         if (!rooms[roomID]) {
